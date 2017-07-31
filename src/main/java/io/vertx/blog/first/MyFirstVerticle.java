@@ -40,15 +40,16 @@ public class MyFirstVerticle extends AbstractVerticle {
   public void start(Future<Void> fut) {
 
     // Create a Mongo client
-    mongo = MongoClient.createShared(vertx, config());
+//    mongo = MongoClient.createShared(vertx, config());
 
 
-    createSomeData(
+/*    createSomeData(
         (nothing) -> startWebApp(
             (http) -> completeStartup(http, fut)
         ), fut);
-  }
-
+*/
+    }
+ 
   private void startWebApp(Handler<AsyncResult<HttpServer>> next) {
     // Create a router object.
     Router router = Router.router(vertx);
@@ -61,7 +62,7 @@ public class MyFirstVerticle extends AbstractVerticle {
           .end("<h1>Hello from my first Vert.x 3 application</h1>");
     });
 
-    router.route("/assets/*").handler(StaticHandler.create("assets"));
+/*    router.route("/assets/*").handler(StaticHandler.create("assets"));
 
     router.get("/api/whiskies").handler(this::getAll);
     router.route("/api/whiskies*").handler(BodyHandler.create());
@@ -69,7 +70,7 @@ public class MyFirstVerticle extends AbstractVerticle {
     router.get("/api/whiskies/:id").handler(this::getOne);
     router.put("/api/whiskies/:id").handler(this::updateOne);
     router.delete("/api/whiskies/:id").handler(this::deleteOne);
-
+*/
 
     // Create the HTTP server and pass the "accept" method to the request handler.
     vertx
@@ -96,7 +97,7 @@ public class MyFirstVerticle extends AbstractVerticle {
   public void stop() throws Exception {
     mongo.close();
   }
-
+/*
   private void addOne(RoutingContext routingContext) {
     final Whisky whisky = Json.decodeValue(routingContext.getBodyAsString(),
         Whisky.class);
@@ -206,4 +207,5 @@ public class MyFirstVerticle extends AbstractVerticle {
       }
     });
   }
+*/
 }
