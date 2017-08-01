@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public class MyFirstVerticle extends AbstractVerticle {
 
-  private Map<Integer, Whisky> products = new LinkedHashMap<>();
+//  private Map<Integer, Whisky> products = new LinkedHashMap<>();
 
   /**
    * This method is called when the verticle is deployed. It creates a HTTP server and registers a simple request
@@ -34,7 +34,7 @@ public class MyFirstVerticle extends AbstractVerticle {
   @Override
   public void start(Future<Void> fut) {
 
-    createSomeData();
+//    createSomeData();
 
     // Create a router object.
     Router router = Router.router(vertx);
@@ -49,13 +49,13 @@ public class MyFirstVerticle extends AbstractVerticle {
 
     router.route("/assets/*").handler(StaticHandler.create("assets"));
 
-    router.get("/api/whiskies").handler(this::getAll);
+/*    router.get("/api/whiskies").handler(this::getAll);
     router.route("/api/whiskies*").handler(BodyHandler.create());
     router.post("/api/whiskies").handler(this::addOne);
     router.get("/api/whiskies/:id").handler(this::getOne);
     router.put("/api/whiskies/:id").handler(this::updateOne);
     router.delete("/api/whiskies/:id").handler(this::deleteOne);
-
+*/
 
     // Create the HTTP server and pass the "accept" method to the request handler.
     vertx
@@ -75,7 +75,7 @@ public class MyFirstVerticle extends AbstractVerticle {
         );
   }
 
-  private void addOne(RoutingContext routingContext) {
+/*  private void addOne(RoutingContext routingContext) {
     // Read the request's content and create an instance of Whisky.
     final Whisky whisky = Json.decodeValue(routingContext.getBodyAsString(),
         Whisky.class);
@@ -152,5 +152,5 @@ public class MyFirstVerticle extends AbstractVerticle {
     Whisky talisker = new Whisky("Talisker 57° North", "Scotland, Island");
     products.put(talisker.getId(), talisker);
   }
-
+*/
 }
